@@ -1,0 +1,16 @@
+minecraft {
+    version = "${config.minecraft.version}-${config.forge.version}"
+
+    replaceIn "li/cil/im/IsoMap.scala"
+    replace "@VERSION@", project.simpleVersion
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version': project.simpleVersion, 'mcversion': config.minecraft.version
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}

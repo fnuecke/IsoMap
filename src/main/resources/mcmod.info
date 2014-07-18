@@ -1,0 +1,16 @@
+[
+{
+  "modid": "IsoMap",
+  "name": "Isometric Minimap",
+  "description": "Adds an isometric minimap to the GUI.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://github.com/MightyPirates/IsoMap",
+  "updateUrl": "",
+  "authorList": ["Florian 'Sangar' Nuecke"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

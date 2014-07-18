@@ -1,0 +1,12 @@
+/.gradle
+/build
+
+# IntelliJ
+/*.iml
+/*.ipr
+/*.iws
+/out
+
+# Debugging
+/eclipse
+/run

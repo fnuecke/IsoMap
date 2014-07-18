@@ -1,0 +1,47 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'scala'
+apply plugin: 'forge'
+
+file "build.properties" withReader {
+    def prop = new Properties()
+    prop.load(it)
+    ext.config = new ConfigSlurper().parse prop
+}
+
+version = "${config.mod.version}"
+group= "li.cil.im"
+archivesBaseName = "IsoMap"
+
+if (System.getenv("BUILD_NUMBER") != null)
+    version += ".${System.getenv("BUILD_NUMBER")}"
+
+if (config.mod.subversion != null && config.mod.subversion != "")
+    version += "-${config.mod.subversion}"
+
+ext.simpleVersion = version
+version = "MC${config.minecraft.version}-${project.version}"
+
+minecraft {
+    version = "1.7.10-10.13.0.1180"
+    assetDir = "eclipse/assets"
+}
+
+apply from: 'gradle/forge.gradle'
+apply from: 'gradle/artifact.gradle'
+apply from: 'gradle/release.gradle'
